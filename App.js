@@ -1,8 +1,10 @@
 import { View, Text, StyleSheet, TouchableOpacity} from 'react-native'
 import React, { useEffect } from 'react';
-import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { Marker, PROVIDER_GOOGLE, enableLatestRenderer } from 'react-native-maps';
 
-const API = 'http://192.168.0.103:8000/Linea10/'
+enableLatestRenderer();
+
+const API = 'https://alexramval.pythonanywhere.com/mostrarPuntosTuristicos'
 
 const App = () => {
 
@@ -17,7 +19,9 @@ const App = () => {
     const res = await fetch(API)
     const data = await res.json()
     data.forEach( element => {
-      lista.push({latitude: parseFloat(element.latitude), longitude: parseFloat(element.longitude), id: element.id})
+      if (element.longitude != null){
+        lista.push({latitude: parseFloat(element.latitude), longitude: parseFloat(element.longitude), id: element.id})
+      }
     });
     setLista(lista)
   }
