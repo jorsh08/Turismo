@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity} from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native'
 import React, { useEffect } from 'react';
 import MapView, { Marker, PROVIDER_GOOGLE, enableLatestRenderer } from 'react-native-maps';
 
@@ -25,9 +25,7 @@ const Mapa = ({navigation}) => {
     const res = await fetch(API)
     const data = await res.json()
     data.forEach( element => {
-      if (element.longitude != null){
         lista.push({latitude: parseFloat(element.latitude), longitude: parseFloat(element.longitude), id: element.id, nombre: element.puntoNombre, informacion: element.puntoInfromacion})
-      }
     });
     setLista(lista)
   }
@@ -69,7 +67,12 @@ const Mapa = ({navigation}) => {
             longitude: element.longitude}}
             key = {element.id}
             onPress = {() => mostrarInformacion(element)}
-        />
+        >
+          <Image
+          source={require('../assets/1.png')}
+          style={{width: 10, height: 10}}
+          resizeMode="contain"/>
+        </Marker>
       ))}
 
       

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 
 const API = 'https://alexramval.pythonanywhere.com/mostrarPuntosTuristicos'
 
-const MisVisitas = () => {
+const MisVisitas = ( {navigation} ) => {
 
     const [listaVisitas, setListaVisitas] = React.useState([])
 
@@ -13,12 +13,14 @@ const MisVisitas = () => {
         setListaVisitas(data)
       }
 
+    async function informacionVisita(Visita){
+        navigation.navigate('Visita', Visita)
+    }
+
     useEffect(()=>{
         getLista()
       })
     
-      
-
   return (
     <View style={[{flex: 1, backgroundColor: '#1f1f1f'}, {flexDirection: 'row'}]}>
         
@@ -31,11 +33,13 @@ const MisVisitas = () => {
             <View style={[styles.listaPTuristicos]}>
                         
                 {listaVisitas.map(Visita => (
-                    <TouchableOpacity key={Visita.id} style={[styles.tarjetaPTuristico, {flexDirection: 'column'}]}>
+                    <TouchableOpacity
+                        key={Visita.id} 
+                        style={[styles.tarjetaPTuristico, {flexDirection: 'column'}]}
+                        onPress={()=>informacionVisita(Visita)}>
                         <Image
                         source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/7/76/El_Palacio_Municipal_%28Atardecer%29.JPG'}}
-                        style={{width: '100%', height: '70%', borderTopLeftRadius: 15, borderTopRightRadius: 15}}
-                        />
+                        style={{width: '100%', height: '70%', borderTopLeftRadius: 15, borderTopRightRadius: 15}}/>
                         <View style={[styles.contenedor, {flexDirection: 'column'}]}>
                             <Text style={[{fontStyle: 'italic', fontWeight: 'bold'}, {flexDirection: 'column'}]}>{Visita.puntoNombre}</Text>
                             <Text style={[{fontStyle: 'italic', fontSize: 12}, {flexDirection: 'column'}]}>{Visita.puntoDir}</Text>
