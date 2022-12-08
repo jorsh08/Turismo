@@ -68,10 +68,11 @@ const Mapa = ({navigation}) => {
             key = {element.id}
             onPress = {() => mostrarInformacion(element)}
         >
+          
           <Image
-          source={require('../assets/1.png')}
-          style={{width: 10, height: 10}}
-          resizeMode="contain"/>
+            source={require('../assets/1.png')}
+            style={{width: 50, height: 50}}
+            resizeMode="contain"/>
         </Marker>
       ))}
 
@@ -134,7 +135,7 @@ const styles = StyleSheet.create({
     height: 0
   },
   misVisitas: {
-    marginTop: '10%',
+    marginTop: '150%',
     backgroundColor: '#3ac562',
     width: 150,
     height: 30,

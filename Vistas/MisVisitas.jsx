@@ -38,7 +38,7 @@ const MisVisitas = ( {navigation} ) => {
                         style={[styles.tarjetaPTuristico, {flexDirection: 'column'}]}
                         onPress={()=>informacionVisita(Visita)}>
                         <Image
-                        source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/7/76/El_Palacio_Municipal_%28Atardecer%29.JPG'}}
+                        source={{uri: Visita.url}}
                         style={{width: '100%', height: '70%', borderTopLeftRadius: 15, borderTopRightRadius: 15}}/>
                         <View style={[styles.contenedor, {flexDirection: 'column'}]}>
                             <Text style={[{fontStyle: 'italic', fontWeight: 'bold'}, {flexDirection: 'column'}]}>{Visita.puntoNombre}</Text>

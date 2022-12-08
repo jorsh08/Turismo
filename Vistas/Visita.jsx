@@ -3,20 +3,10 @@ import React, {useEffect} from 'react'
 
 const Visita = ( {navigation, route} ) => {
     
-    const [puntoNombre, setpuntoNombre] = React.useState('')
-    const [puntoInfromacion, setpuntoInfromacion] = React.useState('')
-    const [puntoHorario, setpuntoHorario] = React.useState('')
-    const [puntoDir, setpuntoDir] = React.useState('')
-
-    async function getParametros(route){
-        setpuntoNombre(route.puntoNombre)
-        setpuntoInfromacion(route.puntoInfromacion)
-        setpuntoHorario(route.puntoHorario)
-        setpuntoDir(route.puntoDir)
-    }
+    const [puntoTuristico, setpuntoTuristico] = React.useState({})
 
     useEffect(()=>{
-        getParametros(route.params)
+        setpuntoTuristico(route.params)
     }, [route])
 
   return (
@@ -30,7 +20,7 @@ const Visita = ( {navigation, route} ) => {
                     onPress={()=>navigation.navigate('MisVisitas')}>
                         <Text>X</Text>
                     </TouchableOpacity>
-                    <Text style={[styles.titulo, styles.textTitulo]}>{puntoNombre}</Text>
+                    <Text style={[styles.titulo, styles.textTitulo]}>{puntoTuristico.puntoNombre}</Text>
                 </View>
             </View>
 
@@ -38,13 +28,13 @@ const Visita = ( {navigation, route} ) => {
                 <View style={{flexDirection:'column'}}>
                     <View style={[{width: '100%', height: '60%'},{flexDirection: 'row'}]}>
                         <Image
-                            source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/7/76/El_Palacio_Municipal_%28Atardecer%29.JPG'}}
+                            source={{uri: puntoTuristico.url}}
                             style={[{width: '100%', height: '100%'}]}/>
                     </View>
                     <View style={[{width: '100%', height: '40%'},{flexDirection: 'row'}]}>
                             <View style={[styles.datosPuntosTuristicos,{flexDirection: 'column'}]}>
-                                <Text>{puntoDir}</Text>
-                                <Text>{puntoHorario}</Text>
+                                <Text>{puntoTuristico.puntoDir}</Text>
+                                <Text>{puntoTuristico.puntoHorario}</Text>
                             </View>
                     </View>
                 </View>
@@ -58,7 +48,7 @@ const Visita = ( {navigation, route} ) => {
                 </View>
                 
                 <View style={{flexDirection: 'row'}}>
-                    <Text>{puntoInfromacion}</Text>
+                    <Text>{puntoTuristico.puntoInfromacion}</Text>
                 </View>
                 
             </View>
