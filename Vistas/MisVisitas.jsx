@@ -22,12 +22,12 @@ const MisVisitas = ( {navigation} ) => {
       })
     
   return (
-    <View style={[{flex: 1, backgroundColor: '#1f1f1f'}, {flexDirection: 'row'}]}>
+    <View style={[{flex: 1, backgroundColor: '#EBDFD2'}, {flexDirection: 'row'}]}>
         
         <ScrollView>
             <View style={[styles.titulo, {flexDirection: 'row'}]}>
                 <View style={{flexDirection: 'row'}}>
-                    <Text style={{color:'#f1f1f1'}}>Mis visitas</Text>
+                    <Text style={{color:'#F85D5A', fontSize: 26}}>Mis visitas</Text>
                 </View>
             </View>
             <View style={[styles.listaPTuristicos]}>
@@ -41,8 +41,8 @@ const MisVisitas = ( {navigation} ) => {
                         source={{uri: Visita.url}}
                         style={{width: '100%', height: '70%', borderTopLeftRadius: 15, borderTopRightRadius: 15}}/>
                         <View style={[styles.contenedor, {flexDirection: 'column'}]}>
-                            <Text style={[{fontStyle: 'italic', fontWeight: 'bold'}, {flexDirection: 'column'}]}>{Visita.puntoNombre}</Text>
-                            <Text style={[{fontStyle: 'italic', fontSize: 12}, {flexDirection: 'column'}]}>{Visita.puntoDir}</Text>
+                            <Text style={[{fontStyle: 'italic', fontWeight: 'bold', color: '#8E7962'}, {flexDirection: 'column'}]}>{Visita.puntoNombre}</Text>
+                            <Text style={[{fontStyle: 'italic', fontSize: 12, color: '#544738'}, {flexDirection: 'column'}]}>{Visita.puntoDir}</Text>
                         </View>
                     </TouchableOpacity>
                 ))}
@@ -61,10 +61,18 @@ const styles = StyleSheet.create({
     },
     tarjetaPTuristico:{
         marginTop: '5%',
-        backgroundColor: '#3a9a3c',
+        backgroundColor: '#ECDDCC',
         width: '80%',
         height: 200,
-        borderRadius: 15
+        borderRadius: 15,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 4.65,
+        elevation: 8,
     },
     listaPTuristicos: {
         height: '100%',

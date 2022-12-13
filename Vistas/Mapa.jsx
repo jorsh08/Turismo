@@ -10,11 +10,11 @@ const Mapa = ({navigation}) => {
 
   const [lista, setLista] = React.useState([])
 
+  const [tipoPunto, settipoPunto] = React.useState('')
+
   const [contenedorInformacion, setContenedorLista] = React.useState(false)
 
   const [puntoTuristico, setPuntoTuristico] = React.useState({})
-
-  
 
   useEffect(()=>{
     getLista();
@@ -25,7 +25,7 @@ const Mapa = ({navigation}) => {
     const res = await fetch(API)
     const data = await res.json()
     data.forEach( element => {
-        lista.push({latitude: parseFloat(element.latitude), longitude: parseFloat(element.longitude), id: element.id, nombre: element.puntoNombre, informacion: element.puntoInfromacion})
+        lista.push({latitude: parseFloat(element.latitude), longitude: parseFloat(element.longitude), id: element.id, nombre: element.puntoNombre, informacion: element.puntoInfromacion, tipoPunto: element.puntoCatID_id})
     });
     setLista(lista)
   }
@@ -39,6 +39,11 @@ const Mapa = ({navigation}) => {
     setContenedorLista(false)
     console.log(c)
   }
+
+  function name() {
+    tipocentro = '../assets/1.png'
+    return tipocentro
+    }
 
   return (
     <View style={{flex:1, alignItems: 'center'}}>
@@ -68,9 +73,8 @@ const Mapa = ({navigation}) => {
             key = {element.id}
             onPress = {() => mostrarInformacion(element)}
         >
-          
           <Image
-            source={require('../assets/1.png')}
+            source={require('../assets/2.png')}
             style={{width: 50, height: 50}}
             resizeMode="contain"/>
         </Marker>
@@ -82,7 +86,7 @@ const Mapa = ({navigation}) => {
      <TouchableOpacity
       style={styles.misVisitas}
       onPress= {() => navigation.navigate('MisVisitas')}>
-      <Text>Mis visitas</Text>
+      <Text style={{color:'#8E7962'}}>Mis visitas</Text>
      </TouchableOpacity>
       <View style={[contenedorInformacion ? styles.contenedorInformacion : styles.contenedorInformacionOculto, {flexDirection: 'row'}]}>
         <View style={{flexDirection: 'column'}}>
@@ -135,13 +139,14 @@ const styles = StyleSheet.create({
     height: 0
   },
   misVisitas: {
-    marginTop: '150%',
+    marginTop: '130%',
     backgroundColor: '#3ac562',
     width: 150,
     height: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 2
+    borderRadius: 90,
+    backgroundColor: '#ECDDCC'
   }
 })
 

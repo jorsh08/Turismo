@@ -18,7 +18,7 @@ const Visita = ( {navigation, route} ) => {
                     <TouchableOpacity
                     style={styles.regresar}
                     onPress={()=>navigation.navigate('MisVisitas')}>
-                        <Text>X</Text>
+                        <Text style={{color: '#8E7962', fontSize: 26, fontWeight: 'bold'}}>X</Text>
                     </TouchableOpacity>
                     <Text style={[styles.titulo, styles.textTitulo]}>{puntoTuristico.puntoNombre}</Text>
                 </View>
@@ -61,7 +61,7 @@ const Visita = ( {navigation, route} ) => {
 const styles = StyleSheet.create({
     contenedorPrincipal: {
         flex:1,
-        backgroundColor: '#15a116'
+        backgroundColor: '#EBDFD2'
     },
     contenedorTitulo: {
         width: '90%',
@@ -80,7 +80,8 @@ const styles = StyleSheet.create({
     },
     titulo: {
         width: '90%',
-        paddingLeft: '5%'
+        paddingLeft: '5%',
+        paddingTop: 5
     },
     regresar: {
         width: '10%', 
@@ -92,8 +93,7 @@ const styles = StyleSheet.create({
     },
     textTitulo: {
         fontSize: 18, 
-        fontWeight: 'bold',
-        color: '#5cd4a9'
+        color: '#F85D5A'
     }
 })
 
